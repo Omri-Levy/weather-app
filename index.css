@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+h1,
+h2 {
+    font-family: 'Playfair Display', sans-serif;
+}
+
+
+.location,
+.temperature {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.temperature__degree-section {
+    min-width: 30em;
+}
+
+.temperature {
+    flex-direction: column;
+}
+
+.temperature__degree-section {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.temperature__degree-section span {
+    margin: 10px;
+    font-size: 30px;
+}
+
+.temperature__degree-section h2 {
+    font-size: 40px;
+}
+
+.temperature__description {
+    text-transform: capitalize;
+}
