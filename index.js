@@ -40,8 +40,6 @@ window.addEventListener(`load`, () => {
 				iconText = iconText + `_${timeOfDay.toUpperCase()}`;
 			}
 
-			console.log(data)
-
 			temperatureDegree.textContent = temp_c;
 			temperatureDescription.textContent = text;
 			locationTimezone.textContent = `${country}, ${region}`;
