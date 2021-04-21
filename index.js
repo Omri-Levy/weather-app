@@ -9,6 +9,8 @@ window.addEventListener(`load`, () => {
 		`.temperature__degree-section`);
 	const temperatureSpan = document.querySelector(
 		`.temperature__degree-section span`);
+	const weatherIcon = document.querySelector(
+		`.weather-icon`);
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(
@@ -28,30 +30,10 @@ window.addEventListener(`load`, () => {
 			const { country, region } = data?.location;
 			const { text, icon } = data?.current?.condition;
 
-			/**
-			 * make darksky weather api's skycons icons work with weatherapi
-			 * */
-			const timeOfDay = icon.includes(`night`) ? `night` :
-				`day`;
-			let iconText = (
-				text.replace(/\s/g, `_`)).toUpperCase();
-			const weatherExceptions = [`SUNNY`, `CLEAR`, `PARTLY_CLOUDY`];
-
-			if (weatherExceptions.includes(iconText)) {
-				const suffix = `_${timeOfDay.toUpperCase()}`;
-
-				if (iconText === `SUNNY`) {
-					iconText = `CLEAR` + suffix;
-				} else {
-					iconText = iconText + suffix;
-				}
-			}
-
 			temperatureDegree.textContent = temp_c;
 			temperatureDescription.textContent = text;
 			locationTimezone.textContent = `${country}, ${region}`;
-			setIcon(iconText, document.querySelector(`#weather-icon`)
-			);
+			weatherIcon.src = `https://${icon}`;
 
 			// change temperature unit
 				temperatureSection.addEventListener(`click`,
@@ -65,13 +47,6 @@ window.addEventListener(`load`, () => {
 					}
 				})
 		})
-
-		const setIcon = (icon, iconId) => {
-			const skycons = new Skycons({ color: `white` });
-			skycons.play();
-
-			return skycons.set(iconId, Skycons[icon]);
-		}
 	} else {
 		temperatureDescription.textContent = `Please enable geolocation ` +
 			`and try again.`;
