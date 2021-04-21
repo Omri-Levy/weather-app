@@ -29,10 +29,6 @@ h2 {
     align-items: center;
 }
 
-.temperature__degree-section {
-    min-width: 11em;
-}
-
 .temperature {
     flex-direction: column;
 }
@@ -43,15 +39,45 @@ h2 {
     cursor: pointer;
 }
 
-.temperature__degree-section span {
-    margin: 10px;
-    font-size: 30px;
-}
-
-.temperature__degree-section h2 {
-    font-size: 40px;
-}
-
 .temperature__description {
     text-transform: capitalize;
 }
+
+
+
+
+
+.location__timezone {
+    font-size: 8em;
+}
+.temperature__degree-section span {
+    font-size: 6em;
+}
+.temperature__degree-section h2 {
+    font-size: 16em;
+}
+.temperature__description {
+    font-size: 3em;
+}
+
+
+@media only screen and (min-width: 30em) {
+
+    .location__timezone {
+        font-size: 4em;
+    }
+
+    .temperature__degree-section span {
+        font-size: 3em;
+    }
+
+    .temperature__degree-section h2 {
+        font-size: 8em;
+    }
+
+    .temperature__description {
+        font-size: 1.5em;
+    }
+
+}
+

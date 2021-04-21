@@ -29,11 +29,18 @@ window.addEventListener(`load`, () => {
 			const { temp_c, temp_f } = data?.current;
 			const { country, region } = data?.location;
 			const { text, icon } = data?.current?.condition;
+			const timeOfDay = icon.includes(`night`) ? `night` :
+				`day`;
+			const dayColor = `hsl(26, 55%, 41%), hsl(231, 50%, 37%)`;
+			const nightColor = `hsl(249, 55%, 41%), hsl(231, 50%, 37%)`;
+			const background = timeOfDay === `day` ? dayColor : nightColor;
 
-			temperatureDegree.textContent = temp_c;
-			temperatureDescription.textContent = text;
-			locationTimezone.textContent = `${country}, ${region}`;
-			weatherIcon.src = `https://${icon}`;
+				temperatureDegree.textContent = temp_c;
+				temperatureDescription.textContent = text;
+				locationTimezone.textContent = `${country}, ${region}`;
+				weatherIcon.src = `https://${icon}`;
+				document.querySelector(`body`).style.background =
+				`linear-gradient(${background})`;
 
 			// change temperature unit
 				temperatureSection.addEventListener(`click`,
