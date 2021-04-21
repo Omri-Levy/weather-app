@@ -35,9 +35,16 @@ window.addEventListener(`load`, () => {
 				`day`;
 			let iconText = (
 				text.replace(/\s/g, `_`)).toUpperCase();
+			const weatherExceptions = [`SUNNY`, `CLEAR`, `PARTLY_CLOUDY`];
 
-			if (iconText === `CLEAR` || iconText === `PARTLY_CLOUDY`) {
-				iconText = iconText + `_${timeOfDay.toUpperCase()}`;
+			if (weatherExceptions.includes(iconText)) {
+				const suffix = `_${timeOfDay.toUpperCase()}`;
+
+				if (iconText === `SUNNY`) {
+					iconText = `CLEAR` + suffix;
+				} else {
+					iconText = iconText + suffix;
+				}
 			}
 
 			temperatureDegree.textContent = temp_c;
